@@ -5,8 +5,6 @@ class NoteController {
     try {
       const { studentCode, professorCode, note, cycle, course } = req.body;
       const createdNote = await Note.create(studentCode, professorCode, note, cycle, course);
-      //log de createNote
-      //console.log(createdNote);
       res.json(createdNote);
     } catch (error) {
       res.status(500).json({ error: 'An error occurred while creating the note.' });
