@@ -17,12 +17,12 @@ app.listen(3000, () => {
 //   res.send('Hello World');
 // });
 
-// app.get('/ping', async (req, res) => {
-//   try {
-//     const result = await pool.query('SELECT NOW()');
-//     return res.json(result.rows[0]);
-//   } catch (error) {
-//     console.error('Error en la consulta:', error);
-//     return res.status(500).json({ error: 'Error en la consulta' });
-//   }
-// });
+/* app.get('/ping', async (req, res) => {
+ try {
+   const result = await pool.query('SELECT NOW()');
+    return res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Error en la consulta:', error);
+    return res.status(500).json({ error: 'Error en la consulta' });
+ }
+});*/
