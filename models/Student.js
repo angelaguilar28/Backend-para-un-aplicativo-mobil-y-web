@@ -13,10 +13,12 @@ class Student {
     //   }
     // }
   
-    static async getStudent() {
+    static async getStudent(studentCod) {
       try {
-        const query = 'SELECT  FROM alumnos WHERE id_alumno = ${2018000329}';
-        const result = await db.query(query);
+        const query = 'SELECT * FROM alumnos WHERE id_alumno = $1';
+        
+        const result = await db.query(query, [studentCod]);
+        
         return result.rows;
       } catch (error) {
         throw error;

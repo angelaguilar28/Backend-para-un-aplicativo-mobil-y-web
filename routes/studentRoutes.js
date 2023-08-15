@@ -4,7 +4,7 @@ const StudentController = require('../controllers/studentController');
 const router = express.Router();
 
 //router.post('/notes', NoteController.createNote);
-router.get('/student', StudentController.getStudent);
+router.get('/student/:id', StudentController.getStudent);
 //router.put('/notes/:id', NoteController.updateNote);
 //router.delete('/notes/:id', NoteController.deleteNote);
 
