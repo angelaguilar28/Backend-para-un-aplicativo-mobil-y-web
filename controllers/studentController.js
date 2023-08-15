@@ -13,10 +13,14 @@ class StudentController {
   
     static async getStudent(req, res) {
       try {
-        const { studentCod } = req.body;
+        const studentCod = req.params.id;
+
+        console.log('codigo en el controller:', studentCod);
+
         const student = await Student.getStudent(studentCod);
         res.json(student);
       } catch (error) {
+
         res.status(500).json({ error: 'An error occurred while fetching the notes.' });
       }
     }

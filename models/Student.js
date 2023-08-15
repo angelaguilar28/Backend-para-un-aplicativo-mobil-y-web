@@ -16,10 +16,13 @@ class Student {
     static async getStudent(studentCod) {
       try {
         const query = 'SELECT * FROM alumnos WHERE id_alumno = $1';
+
+        const values = [studentCod];
+
+        const result = await db.query(query,values);
         
-        const result = await db.query(query, [studentCod]);
-        
-        return result.rows;
+        return result.rows[0];
+
       } catch (error) {
         throw error;
       }
