@@ -15,7 +15,7 @@ class Note {
 
   static async getNotes() {
     try {
-      const query = 'SELECT * FROM notes';
+      const query = 'SELECT * FROM alumnos';
       const result = await db.query(query);
       return result.rows;
     } catch (error) {
