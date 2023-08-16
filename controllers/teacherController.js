@@ -11,6 +11,17 @@ class TeacherController {
     //   }
     // }
   
+    static async getTeacherSubjects(req, res){
+      try{
+        const teacherCod = req.params.id;
+        const teacher = await Teacher.getTeacherSubjects(teacherCod);
+        res.json(teacher);
+      }catch (error){
+        res.status(500).json({error: 'An error ocurred while fetching the teacher information.'})
+      }
+    }
+
+
     static async getTeacher(req, res) {
       try {
         const teacherCod = req.params.id;
@@ -25,6 +36,7 @@ class TeacherController {
       }
     }
   
+
     // static async updateNote(req, res) {
     //   try {
     //     const noteId = req.params.id;

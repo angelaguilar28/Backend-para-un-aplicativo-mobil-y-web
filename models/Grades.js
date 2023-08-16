@@ -1,6 +1,6 @@
 const db = require('../config/db');
 
-class Note {
+class Grades {
   static async create(studentCode, professorCode, note, cycle, course) {
     try {
       const query = 'INSERT INTO notes (student_code, professor_code, note, cycle, course) VALUES ($1, $2, $3, $4, $5) RETURNING *';
@@ -15,7 +15,7 @@ class Note {
 
   static async getNotes() {
     try {
-      const query = 'SELECT * FROM notes';
+      const query = 'SELECT * FROM alumnos';
       const result = await db.query(query);
       return result.rows;
     } catch (error) {
@@ -46,6 +46,7 @@ class Note {
       throw error;
     }
   }
+  
 }
 
-module.exports = Note;
+module.exports = Grades;

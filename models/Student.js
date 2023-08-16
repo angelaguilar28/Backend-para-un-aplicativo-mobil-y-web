@@ -17,10 +17,8 @@ class Student {
       try {
         const query = 'SELECT obtener_info_alumno($1)';
 
-        //const values = parseInt(studentCod);
         const values = [studentCod];
 
-        //console.log(values);
         const result = await db.query(query, values);
         
         return result.rows;
