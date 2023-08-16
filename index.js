@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const noteRoutes = require('./routes/noteRoutes');
 const studentRoutes = require('./routes/studentRoutes');
+const teacherRoutes = require('./routes/teacherRoutes');
 const db = require('./config/db');
 
 const app = express();
@@ -11,7 +12,7 @@ app.use(bodyParser.json());
 app.use('/auth', authRoutes);
 app.use('/api', noteRoutes);
 app.use('/api', studentRoutes);
-
+app.use('/api', teacherRoutes);
 
 
 

@@ -1,6 +1,6 @@
 const db = require('../config/db');
 
-class Student {
+class Teacher {
     // static async create(studentCode, professorCode, note, cycle, course) {
     //   try {
     //     const query = 'INSERT INTO notes (student_code, professor_code, note, cycle, course) VALUES ($1, $2, $3, $4, $5) RETURNING *';
@@ -13,15 +13,13 @@ class Student {
     //   }
     // }
   
-    static async getStudent(studentCod) {
+    static async getTeacher(teacherCod) {
       try {
-        const query = 'SELECT obtener_info_alumno($1)';
+        const query = 'SELECT public.obtener_info_profesor($1)';
+        
+        const values = [teacherCod];
 
-        //const values = parseInt(studentCod);
-        const values = [studentCod];
-
-        //console.log(values);
-        const result = await db.query(query, values);
+        const result = await db.query(query,values);
         
         return result.rows;
 
@@ -55,4 +53,4 @@ class Student {
     // }
   }
   
-  module.exports = Student;
+  module.exports = Teacher;

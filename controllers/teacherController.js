@@ -1,6 +1,6 @@
-const Student = require('../models/Student');
+const Teacher = require('../models/Teacher');
 
-class StudentController {
+class TeacherController {
     // static async createNote(req, res) {
     //   try {
     //     const { studentCode, professorCode, note, cycle, course } = req.body;
@@ -11,14 +11,14 @@ class StudentController {
     //   }
     // }
   
-    static async getStudent(req, res) {
+    static async getTeacher(req, res) {
       try {
-        const studentCod = req.params.id;
+        const teacherCod = req.params.id;
 
-        //console.log('codigo en el controller:', studentCod);
+        console.log('codigo en el controller:', teacherCod);
 
-        const student = await Student.getStudent(studentCod);
-        res.json(student);
+        const teacher = await Teacher.getTeacher(teacherCod);
+        res.json(teacher);
       } catch (error) {
 
         res.status(500).json({ error: 'An error occurred while fetching the notes.' });
@@ -49,5 +49,5 @@ class StudentController {
     // }
   }
   
-  module.exports = StudentController;
+  module.exports = TeacherController;
   
