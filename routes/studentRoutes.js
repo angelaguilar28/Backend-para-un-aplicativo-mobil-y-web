@@ -5,7 +5,7 @@ const router = express.Router();
 
 //router.post('/notes', NoteController.createNote);
 router.get('/student/:id', StudentController.getStudent);
-//router.put('/notes/:id', NoteController.updateNote);
+//router.get('/studentSection/:id', StudentController.getSections);
 //router.delete('/notes/:id', NoteController.deleteNote);
 
 module.exports = router;
