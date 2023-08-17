@@ -3,18 +3,32 @@ const db = require('../config/db');
 class AuthController {
   static async login(req, res) {
     try {
-      const { username, password } = req.body;
 
-      const user = await db.query('SELECT * FROM users WHERE username = $1', [username]);
+      const username = req.params.id;
+      const password = req.params.idp;
+
+      console.log('El usuario: ',username);
+      console.log('La contraseña: ',password);
+
+      const values = [username,password]
+
+      const user = await db.query('SELECT * FROM validar_usuario( $1 , $2 )', values);
+
+      const nivel_acceso = user.rows[0].id_nivel_acceso;
+      const codInst = user.rows[0].codigo_institucional;
+
+      //console.log(user);
+
       if (user.rows.length === 0) {
         return res.status(401).json({ message: 'Invalid username or password' });
       }
 
-      if (user.rows[0].password !== password) {
-        return res.status(401).json({ message: 'Invalid username or password' });
-      }
+      // if (user.rows[0].password !== password) {
+      //   return res.status(401).json({ message: 'Invalid username or password' });
+      // }
 
-      res.json({ message: 'Login successful' });
+      res.json(user.rows);
+
     } catch (error) {
       res.status(500).json({ error: 'An error occurred while logging in.' });
     }
