@@ -23,20 +23,67 @@ class TeacherController {
 
         res.status(500).json({ error: 'An error occurred while fetching the notes.' });
       }
+    }  
+
+
+    static async getTeacherSubjectsList(req, res) {
+      try {
+        const teacherSubjCod = req.params.id;
+
+        //console.log('codigo en el controller:', teacherSubjCod);
+        const teacher = await Teacher.getTeacherSubjectsList(teacherSubjCod);
+        res.json(teacher);
+
+      } catch (error) {
+        res.status(500).json({ error: 'An error occurred while fetching the notes.' });
+      }
     }
   
-    // static async updateNote(req, res) {
-    //   try {
-    //     const noteId = req.params.id;
-    //     const { studentCode, professorCode, note, cycle, course } = req.body;
+
+
+    static async getTeacherSingleSubjects(req, res) {
+      try {
+
+        const teacherSubjCod = req.params.id;
+        //console.log('codigo en el controller:', teacherSubjCod);
+        const teacher = await Teacher.getTeacherSingleSubjects(teacherSubjCod);
+        res.json(teacher);
+
+      } catch (error) {
+
+        res.status(500).json({ error: 'An error occurred while fetching the notes.' });
+      }
+    }
+
+
+    static async getTeacherStudents(req, res) {
+      try {
+
+        const teacherSubjCod = req.params.id;
+        //console.log('codigo en el controller:', teacherSubjCod);
+        const teacher = await Teacher.getTeacherStudents(teacherSubjCod);
+        res.json(teacher);
+      } catch (error) {
+
+        res.status(500).json({ error: 'An error occurred while fetching the notes.' });
+      }
+    }
+
+    // FALTA CONTINUAR DESARROLLO
+    static async UpdateGrades(req, res) {
+      try {
+        const gradeId = req.params.id;
+        const { ep, ef, pp } = req.body;
   
-    //     const updatedNote = await Note.update(noteId, studentCode, professorCode, note, cycle, course);
-    //     res.json(updatedNote);
-    //   } catch (error) {
-    //     res.status(500).json({ error: 'An error occurred while updating the note.' });
-    //   }
-    // }
+        const updatedGrade = await Note.update(gradeId, ep, ef, pp);
+        res.json(updatedGrade);
+
+      } catch (error) {
+        res.status(500).json({ error: 'An error occurred while updating the note.' });
+      }
+    }
   
+
     // static async deleteNote(req, res) {
     //   try {
     //     const noteId = req.params.id;
