@@ -19,11 +19,10 @@ class Teacher {
 
 
 
-    static async getTeacherSubjectsList(teacherCod) {
+    static async getTeacherSubjectsList(teacherSubjCod) {
       try {
         const query = 'SELECT * FROM obtener_cursos_asignados($1)';
-        
-        const values = [teacherCod];
+        const values = [teacherSubjCod];
         const result = await db.query(query,values);      
         return result.rows;
 
