@@ -61,10 +61,10 @@ class Teacher {
 
 
     // FALTA TERMINAR DE DESARROLLAR
-   static async update(id, studentCode, examenparcial, practicas, examenfinal, course) {
+   static async updateGrades(id, examenparcial, practicas, examenfinal, notafinal) {
      try {
-       const query = 'UPDATE notes SET student_code = $1*';
-       const values = [studentCode, professorCode, note, cycle, course, id];
+       const query = 'SELECT actualizar_notas ($1 , $2, $3, $4, $5)'
+       const values = [id, examenparcial, practicas, examenfinal, notafinal];
 
        const result = await db.query(query, values);
        return result.rows[0];
