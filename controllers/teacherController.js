@@ -1,16 +1,11 @@
 const Teacher = require('../models/Teacher');
 
 class TeacherController {
-    // static async createNote(req, res) {
-    //   try {
-    //     const { studentCode, professorCode, note, cycle, course } = req.body;
-    //     const createdNote = await Note.create(studentCode, professorCode, note, cycle, course);
-    //     res.json(createdNote);
-    //   } catch (error) {
-    //     res.status(500).json({ error: 'An error occurred while creating the note.' });
-    //   }
-    // }
-  
+
+
+
+    //FUNCION PARA OBTENER LA INFORMACIÓN DE UN PROFESOR
+
     static async getTeacher(req, res) {
       try {
         const teacherCod = req.params.id;
@@ -25,12 +20,11 @@ class TeacherController {
       }
     }  
 
+    //FUNCION PARA OBTENER LA LISTA DE CURSOS DE UN PROFESOR
 
     static async getTeacherSubjectsList(req, res) {
       try {
         const teacherSubjCod = req.params.id;
-
-        //console.log('codigo en el controller:', teacherSubjCod);
         const teacher = await Teacher.getTeacherSubjectsList(teacherSubjCod);
         res.json(teacher);
 
@@ -40,6 +34,7 @@ class TeacherController {
     }
   
 
+    //FUNCION PARA OBTENER DATOS DE UN SOLO CURSO DE UN PROFESOR
 
     static async getTeacherSingleSubjects(req, res) {
       try {
@@ -48,7 +43,6 @@ class TeacherController {
         //console.log('codigo en el controller:', teacherSubjCod);
         const teacher = await Teacher.getTeacherSingleSubjects(teacherSubjCod);
         res.json(teacher);
-
       } catch (error) {
 
         res.status(500).json({ error: 'An error occurred while fetching the notes.' });
@@ -56,11 +50,12 @@ class TeacherController {
     }
 
 
+
+    // FUNCION PARA PEDIR LA LISTA DE LOS ALUMNOS POR CURSO UI PROFESOR
+
     static async getTeacherStudents(req, res) {
       try {
-
         const teacherSubjCod = req.params.id;
-        //console.log('codigo en el controller:', teacherSubjCod);
         const teacher = await Teacher.getTeacherStudents(teacherSubjCod);
         res.json(teacher);
       } catch (error) {
@@ -70,30 +65,18 @@ class TeacherController {
     }
 
     // FALTA CONTINUAR DESARROLLO
+
     static async UpdateGrades(req, res) {
       try {
-        const gradeId = req.params.id;
-        const { ep, ef, pp } = req.body;
-  
-        const updatedGrade = await Note.update(gradeId, ep, ef, pp);
-        res.json(updatedGrade);
 
+        const { id,examenparcial, practicas, examenfinal, notafinal } = req.body;
+        const updatedGrade = await Note.updateGrades(id, examenparcial, practicas, examenfinal, notafinal);
+        res.json(updatedGrade);
       } catch (error) {
         res.status(500).json({ error: 'An error occurred while updating the note.' });
       }
     }
   
-
-    // static async deleteNote(req, res) {
-    //   try {
-    //     const noteId = req.params.id;
-  
-    //     const deletedNote = await Note.delete(noteId);
-    //     res.json(deletedNote);
-    //   } catch (error) {
-    //     res.status(500).json({ error: 'An error occurred while deleting the note.' });
-    //   }
-    // }
   }
   
   module.exports = TeacherController;

@@ -23,8 +23,9 @@ class NoteController {
   static async updateNote(req, res) {
     try {
       const noteId = req.params.id;
+      
       const { studentCode, professorCode, note, cycle, course } = req.body;
-
+      
       const updatedNote = await Note.update(noteId, studentCode, professorCode, note, cycle, course);
       res.json(updatedNote);
     } catch (error) {

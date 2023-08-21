@@ -13,11 +13,7 @@ class AuthController {
       const values = [username,password]
 
       const user = await db.query('SELECT * FROM validar_usuario( $1 , $2 )', values);
-
-      //const nivel_acceso = user.rows[0].id_nivel_acceso;
-      //const codInst = user.rows[0].codigo_institucional;
-
-
+      
       if (user.rows.length === 0) {
         return res.status(401).json({ message: 'Invalid username or password' });
       }
