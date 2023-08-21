@@ -59,8 +59,6 @@ class TeacherController {
       }
     }
 
-
-
     // FUNCION PARA PEDIR LA LISTA DE LOS ALUMNOS POR CURSO UI PROFESOR
 
     static async getTeacherStudents(req, res) {
