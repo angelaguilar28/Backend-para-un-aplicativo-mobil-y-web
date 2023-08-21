@@ -1,22 +1,22 @@
 const Grades = require('../models/Grades');
 
 class GradesController {
-  static async createNote(req, res) {
+  static async createGrades(req, res) {
     try {
       const { studentCode, professorCode, note, cycle, course } = req.body;
-      const createdNote = await Grades.create(studentCode, professorCode, note, cycle, course);
-      res.json(createdNote);
+      const createdGrade = await Grades.create(studentCode, professorCode, note, cycle, course);
+      res.json(createdGrade);
     } catch (error) {
-      res.status(500).json({ error: 'An error occurred while creating the note.' });
+      res.status(500).json({ error: 'An error occurred while creating the grades.' });
     }
   }
 
   static async getGrades(req, res) {
     try {
-      const notes = await Grades.getGrades();
-      res.json(notes);
+      const grades = await Grades.getGrades();
+      res.json(grades);
     } catch (error) {
-      res.status(500).json({ error: 'An error occurred while fetching the notes.' });
+      res.status(500).json({ error: 'An error occurred while fetching the grades.' });
     }
   }
 
@@ -28,7 +28,7 @@ class GradesController {
       const updatedGrade = await Grades.update(gradeId, studentCode, professorCode, note, cycle, course);
       res.json(updatedGrade);
     } catch (error) {
-      res.status(500).json({ error: 'An error occurred while updating the note.' });
+      res.status(500).json({ error: 'An error occurred while updating the grades.' });
     }
   }
 
@@ -39,7 +39,7 @@ class GradesController {
       const deletedGrade = await Grades.delete(gradeId);
       res.json(deletedGrade);
     } catch (error) {
-      res.status(500).json({ error: 'An error occurred while deleting the note.' });
+      res.status(500).json({ error: 'An error occurred while deleting the grades.' });
     }
   }
 }

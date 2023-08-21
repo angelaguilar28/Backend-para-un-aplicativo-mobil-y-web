@@ -13,7 +13,7 @@ class Grades {
     }
   }
 
-  static async getNotes() {
+  static async getGrades() {
     try {
       const query = 'SELECT * FROM alumnos';
       const result = await db.query(query);
