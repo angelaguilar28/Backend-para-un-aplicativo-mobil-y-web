@@ -1,17 +1,7 @@
 const Teacher = require('../models/Teacher');
 
 class TeacherController {
-<<<<<<< HEAD
-    // static async createNote(req, res) {
-    //   try {
-    //     const { studentCode, professorCode, note, cycle, course } = req.body;
-    //     const createdNote = await Note.create(studentCode, professorCode, note, cycle, course);
-    //     res.json(createdNote);
-    //   } catch (error) {
-    //     res.status(500).json({ error: 'An error occurred while creating the note.' });
-    //   }
-    // }
-  
+
     static async getTeacherSubjects(req, res){
       try{
         const teacherCod = req.params.id;
@@ -23,13 +13,9 @@ class TeacherController {
     }
 
 
-=======
-
-
-
     //FUNCION PARA OBTENER LA INFORMACIÓN DE UN PROFESOR
 
->>>>>>> 55cb0a47c5c57f138d94c5023c321abcb5b657b4
+
     static async getTeacher(req, res) {
       try {
         const teacherCod = req.params.id;
@@ -58,12 +44,6 @@ class TeacherController {
     }
   
 
-<<<<<<< HEAD
-    // static async updateNote(req, res) {
-    //   try {
-    //     const noteId = req.params.id;
-    //     const { studentCode, professorCode, note, cycle, course } = req.body;
-=======
     //FUNCION PARA OBTENER DATOS DE UN SOLO CURSO DE UN PROFESOR
 
     static async getTeacherSingleSubjects(req, res) {
@@ -106,7 +86,6 @@ class TeacherController {
         res.status(500).json({ error: 'An error occurred while updating the note.' });
       }
     }
->>>>>>> 55cb0a47c5c57f138d94c5023c321abcb5b657b4
   
   }
   
