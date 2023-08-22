@@ -17,6 +17,18 @@ class DecanoController {
 
 
 
+      static async getPeriodos(req, res) {
+        try {
+
+          const periodos = await Decano.getPeriodos();
+          res.json(periodos);
+
+        } catch (error) {
+  
+          res.status(500).json({ error: 'An error occurred while fetching the notes.' });
+        }
+      }
+
 
 
 }
