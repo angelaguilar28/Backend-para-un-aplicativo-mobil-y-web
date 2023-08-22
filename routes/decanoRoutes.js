@@ -3,7 +3,7 @@ const DecanoController = require('../controllers/decanoController');
 
 const router = express.Router();
 
-//router.post('/notes', NoteController.createNote);
+router.get('/periodos', DecanoController.getPeriodos);
 router.get('/escuelas', DecanoController.getEscuelas);
 //router.put('/notes/:id', NoteController.updateNote);
 //router.delete('/notes/:id', NoteController.deleteNote);
