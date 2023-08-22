@@ -1,18 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
-const noteRoutes = require('./routes/gradesRoutes');
+const gradesRoutes = require('./routes/gradesRoutes');
 const studentRoutes = require('./routes/studentRoutes');
 const teacherRoutes = require('./routes/teacherRoutes');
-const db = require('./config/db');
+const decanoRoutes = require('./routes/decanoRoutes');
+
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use('/auth', authRoutes);
-app.use('/api', noteRoutes);
+app.use('/api', gradesRoutes);
 app.use('/api', studentRoutes);
 app.use('/api', teacherRoutes);
+app.use('/api', decanoRoutes);
 
 
 
