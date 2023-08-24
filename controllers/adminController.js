@@ -32,9 +32,9 @@ class AdminController {
 
       static async getProfesorPeriodo(req, res) {
         try {
-
-           const { escuela,periodo} = req.body;
-          const profesores = await Decano.getProfesorPeriodo( escuela,periodo);
+          const {periodo,escuela} = req.query;
+          console.log(periodo,escuela);
+          const profesores = await Admin.getProfesorPeriodo( periodo,escuela);
           res.json(profesores);
 
         } catch (error) {

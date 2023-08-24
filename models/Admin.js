@@ -27,6 +27,19 @@ class Admin{
         }
       }
 
+      
+      static async getProfesorPeriodo(periodo,escuela) {
+        try {
+          const values = [periodo,escuela];
+          console.log(values);
+          const query = 'SELECT * FROM obtener_profesores_periodo( $1 , $2 )';
+          const result = await db.query(query,values);
+          return result.rows;
+        } catch (error) {
+          throw error;
+        }
+      }
+
 }
 
 module.exports = Admin;

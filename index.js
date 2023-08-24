@@ -5,7 +5,7 @@ const gradesRoutes = require('./routes/gradesRoutes');
 const studentRoutes = require('./routes/studentRoutes');
 const teacherRoutes = require('./routes/teacherRoutes');
 const decanoRoutes = require('./routes/decanoRoutes');
-const adminRoutes = requere('./routes/adminRoutes')
+const adminRoutes = require('./routes/adminRoutes')
 
 const app = express();
 
