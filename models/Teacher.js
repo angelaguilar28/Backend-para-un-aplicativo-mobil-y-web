@@ -75,6 +75,7 @@ class Teacher {
     // FALTA TERMINAR DE DESARROLLAR
    static async updateGrades(id, examenparcial, practicas, examenfinal) {
      try {
+      
        const query = 'SELECT actualizar_notas ($1 , $2, $3, $4)'
        const values = [id, examenparcial, practicas, examenfinal];
        const result = await db.query(query, values);
@@ -84,8 +85,6 @@ class Teacher {
         throw error;
       }
     }
-
-
   }
   
   module.exports = Teacher;
