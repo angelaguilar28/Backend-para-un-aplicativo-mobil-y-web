@@ -44,6 +44,21 @@ class AdminController {
       }
 
 
+
+
+      static async getProfesorPeriodoCurso(req, res) {
+        try {
+          const {periodo,escuela,profesor} = req.query;
+          console.log(periodo,escuela,profesor);
+          const cursos = await Admin.getProfesorPeriodoCurso( periodo,escuela,profesor);
+          res.json(cursos);
+
+        } catch (error) {
+  
+          res.status(500).json({ error: 'An error occurred while fetching the notes.' });
+        }
+      }
+
 }
 
 module.exports = AdminController;

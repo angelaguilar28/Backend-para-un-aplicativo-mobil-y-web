@@ -6,6 +6,6 @@ const router = express.Router();
 router.get('/periodos', AdminController.getPeriodos);
 router.get('/escuelas', AdminController.getEscuelas);
 router.get('/profper', AdminController.getProfesorPeriodo);
-//router.delete('/notes/:id', NoteController.deleteNote);
+router.get('/profpercurso', AdminController.getProfesorPeriodoCurso);
 
 module.exports = router;
