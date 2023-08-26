@@ -75,11 +75,11 @@ class TeacherController {
     // FALTA CONTINUAR DESARROLLO
 
     
-    static async UpdateGrades(req, res) {
+    static async updateGrades(req, res) {
       try {
           const { id, examenparcial, practicas, examenfinal } = req.query;
           console.log('VALUES en controller',id, examenparcial, practicas, examenfinal );
-          const updatedGrade = await Note.updateGrades(id, examenparcial, practicas, examenfinal);
+          const updatedGrade = await Note.UpdateGrades(id, examenparcial, practicas, examenfinal);
           
           res.json(updatedGrade);
       } catch (error) {
