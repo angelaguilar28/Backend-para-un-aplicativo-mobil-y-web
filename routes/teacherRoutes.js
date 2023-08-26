@@ -8,7 +8,7 @@ router.get('/teacher/:id', TeacherController.getTeacher);
 router.get('/teacherList/:id', TeacherController.getTeacherSubjectsList);
 router.get('/teacherSingleSubj/:id', TeacherController.getTeacherSingleSubjects);
 router.get('/teacherStudents/:id', TeacherController.getTeacherStudents);
-router.put('/teacherGrades', TeacherController.UpdateGrades);
+router.put('/teacherGrades', TeacherController.updateGrades);
 
 module.exports = router;
 
