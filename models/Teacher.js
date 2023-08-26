@@ -78,6 +78,7 @@ class Teacher {
       
        const query = 'SELECT actualizar_notas ($1 , $2, $3, $4)'
        const values = [id, examenparcial, practicas, examenfinal];
+       console.log('VALUES en QUERY',id, examenparcial, practicas, examenfinal );
        const result = await db.query(query, values);
        return result.rows[0];
        

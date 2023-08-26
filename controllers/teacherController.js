@@ -78,7 +78,9 @@ class TeacherController {
     static async UpdateGrades(req, res) {
       try {
           const { id, examenparcial, practicas, examenfinal } = req.body;
+          console.log('VALUES en controller',id, examenparcial, practicas, examenfinal )
           const updatedGrade = await Note.updateGrades(id, examenparcial, practicas, examenfinal);
+          
           res.json(updatedGrade);
       } catch (error) {
           res.status(500).json({ error: 'An error occurred while updating the grades.' });
