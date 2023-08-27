@@ -72,7 +72,8 @@ class Teacher {
     }
 
 
-    // FALTA TERMINAR DE DESARROLLAR
+    // ACTUALIZACION DE NOTAS 
+    
    static async updateGrades(id, examenparcial, practicas, examenfinal) {
      try {
       
@@ -87,12 +88,32 @@ class Teacher {
       }
     }
 
+
+    //VALIDACION DE EDICIÓN DE CELDAS
+
     static async updateValidate(id_validacion, permiso_editar_notas, notasf_ep, notasf_pp,notasf_ef) {
       try {
        
         const query = 'SELECT public.actualizar_validacion_y_cursos($1 , $2, $3, $4, $5)'
         const values = [id_validacion, permiso_editar_notas, notasf_ep, notasf_pp, notasf_ef];
         console.log('VALUES en QUERY',id_validacion, permiso_editar_notas, notasf_ep, notasf_pp,notasf_ef);
+        const result = await db.query(query, values);
+        return result.rows[0];
+        
+       } catch (error) {
+         throw error;
+       }
+     }
+
+
+      // UPDATE DE URL DE LA FOTO TOMADA POR EL PROFESOR
+
+     static async updatePhoto(id,urlImg) {
+      try {
+       
+        const query = 'SELECT public.actualizar_img($1 , $2)'
+        const values = [id,urlImg];
+        console.log('VALUES en QUERY',id,urlImg);
         const result = await db.query(query, values);
         return result.rows[0];
         

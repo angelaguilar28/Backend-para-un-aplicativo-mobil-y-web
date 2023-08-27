@@ -87,9 +87,36 @@ class TeacherController {
       }
   }
 
+  static async updateValidate(req, res) {
+    try {
+        const { id, permiso, notasf_ep, notasf_pp,notasf_ef } = req.query;
+        console.log('VALUES en controller',id, permiso, notasf_ep, notasf_pp,notasf_ef );
+        const updateVal = await Teacher.updateValidate(id, permiso, notasf_ep, notasf_pp,notasf_ef);
+        
+        res.json(updateVal);
+    } catch (error) {
+        res.status(500).json({ error: 'An error occurred while updating the grades.' });
+    }
+
+}
+
+    
+  static async updatePhoto(req, res) {
+    try {
+        const { id, urlimg} = req.query;
+        console.log('VALUES en controller',id, urlimg );
+        const updateVal = await Teacher.updatePhoto(id, urlimg);
+        
+        res.json(updateVal);
+    } catch (error) {
+        res.status(500).json({ error: 'An error occurred while updating the grades.' });
+    }
 
 
   }
+
+
+}
   
   module.exports = TeacherController;
   
