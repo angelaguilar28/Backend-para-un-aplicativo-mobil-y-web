@@ -16,7 +16,13 @@ app.use('/api', studentRoutes);
 app.use('/api', teacherRoutes);
 app.use('/api', decanoRoutes);
 app.use('/api', adminRoutes);
-
+app.use((req,res,next) => {
+  res.header('Access-Control-Allow-Origin','*');
+  res.header('Access-Control-Allow-Origin','Authorization, X-API-KEY,X-Requested-With, Content-Type,Accept,Access-Control-Allow-Request-Method');
+  res.header('Access-Control-Allow-Methods','GET,POST,OPTIONS,PUT,DELETE');
+  res.header('Allow','GET,POST,OPTIONS,PUT,DELETE');
+  next();
+})
 
 
 
