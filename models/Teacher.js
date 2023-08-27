@@ -76,7 +76,7 @@ class Teacher {
    static async updateGrades(id, examenparcial, practicas, examenfinal) {
      try {
       
-       const query = 'SELECT actualizar_notas ($1 , $2, $3, $4)'
+       const query = 'SELECT actualizar_notas($1 , $2, $3, $4)'
        const values = [id, examenparcial, practicas, examenfinal];
        console.log('VALUES en QUERY',id, examenparcial, practicas, examenfinal );
        const result = await db.query(query, values);
@@ -86,6 +86,24 @@ class Teacher {
         throw error;
       }
     }
+
+    static async updateValidate(id_validacion, permiso_editar_notas, notasf_ep, notasf_pp,notasf_ef) {
+      try {
+       
+        const query = 'SELECT public.actualizar_validacion_y_cursos($1 , $2, $3, $4, $5)'
+        const values = [id_validacion, permiso_editar_notas, notasf_ep, notasf_pp, notasf_ef];
+        console.log('VALUES en QUERY',id_validacion, permiso_editar_notas, notasf_ep, notasf_pp,notasf_ef);
+        const result = await db.query(query, values);
+        return result.rows[0];
+        
+       } catch (error) {
+         throw error;
+       }
+     }
+ 
+
+
+
   }
   
   module.exports = Teacher;
