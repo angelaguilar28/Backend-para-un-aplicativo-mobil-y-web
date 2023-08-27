@@ -2,6 +2,9 @@ const db = require('../config/db');
 
 class Teacher {
 
+    //OBTENER INFORMACION DE UN PROFESOR POR CODIGO
+
+
     static async getTeacher(teacherCod) {
       try {
         const query = 'SELECT public.obtener_info_profesor($1)';
@@ -17,19 +20,9 @@ class Teacher {
       }
 
     }
-    static async getTeacherSubjects(teacherCod) {
-      try {
-        const query = 'SELECT obtener_cursos_asignados($1)';        
-        const values = [teacherCod];
-        const result = await db.query(query,values);
-
-        return result.rows;
-      } catch (error) {
-        throw error;
-      }
-    }
 
 
+      //LISTA DE LOS CURSOS QUE ESTA ACARGO UN PROFESOR
 
     static async getTeacherSubjectsList(teacherSubjCod) {
       try {
@@ -44,6 +37,8 @@ class Teacher {
       }
     }
 
+    //OBTENER LA INFORMACIÓN INDIVIDUAL DE UN CURSO EL CUAL UN PROFESOR ESTE A CARGO
+
 
     static async getTeacherSingleSubjects(subjectCod) {
       try {
@@ -57,6 +52,9 @@ class Teacher {
         throw error;
       }
     }
+
+    //OBTIENE LA LISTA DE ESTUDIANTE DE UN CURSO ESPECIFICADO POR EL CODIGO DEL PROFESOR
+
 
     static async getTeacherStudents(subjectCod) {
       try {
@@ -73,7 +71,7 @@ class Teacher {
 
 
     // ACTUALIZACION DE NOTAS 
-    
+
    static async updateGrades(id, examenparcial, practicas, examenfinal) {
      try {
       
